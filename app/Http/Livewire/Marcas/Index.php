@@ -38,7 +38,7 @@ class Index extends Component implements ICrud
     public function store(){
 
         $this->validate([
-            'brand_name'=>'required|min:5|max:191',
+            'brand_name'=>'required|min:5|max:191|unique:marcas',
             //'brand_code'=>'required|min:11|numeric',
         ]);
 

@@ -29,6 +29,7 @@
             <th scope="col">Ubigeo</th>
             <th scope="col">Teléfono</th>
             <th scope="col">Estado</th>
+            <th scope="col">Fecha Creación</th>
         </tr>
         </thead>
         <tbody>
@@ -44,6 +45,7 @@
                     <td>{{$marca->brand_ubigeo}}</td>
                     <td>{{$marca->brand_telefono}}</td>
                     <td>{{$marca->brand_estado}}</td>
+                    <td>{{$marca->created_at->format('d/m/Y')}}</td>
                 </tr>
             @empty
                 <h4>No hay datos</h4>
