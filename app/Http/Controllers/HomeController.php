@@ -15,7 +15,7 @@ class HomeController extends Controller
      */
     public function __construct(IMarcaDAO $imarcadao)
     {
-       // $this->middleware('auth');
+        $this->middleware('auth');
         $this->mi = $imarcadao;
     }
 

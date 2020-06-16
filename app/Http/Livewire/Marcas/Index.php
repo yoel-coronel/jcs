@@ -22,30 +22,31 @@ class Index extends Component implements ICrud
        public  $brand_code_departamento;
        public  $brand_ubigeo;
 
-       protected  $imarcadao;
-
-       /*public function __construct(IMarcaDAO $imarca)
-       {
-           $this->imarcadao = $imarca;
-       }*/
-
-   /* public function mount(IMarcaDAO $imarca)
-    {
-       Model::find(1);
-    }*/
-
+       public $form = 0;
+    public function create(){
+        $this->form = 1;
+    }
+    public function show(){
+        $this->form = 2;
+    }
     public function render()
     {
-        return view('livewire.marcas.index');
+        return view('livewire.marcas.index',[
+            'marcas' => Marca::paginate()
+            ]);
     }
     public function store(){
 
         $this->validate([
             'brand_name'=>'required|min:5|max:191',
-            'brand_code'=>'required|min:11|numeric',
+            //'brand_code'=>'required|min:11|numeric',
         ]);
-        $this->imarcadao;
 
+        Marca::create([
+            'brand_name' =>$this->brand_name
+        ]);
+
+        $this->form = 0;
         session()->flash('status', 'Datos guardados.');
     }
     public function update(){

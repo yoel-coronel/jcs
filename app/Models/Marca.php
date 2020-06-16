@@ -18,6 +18,7 @@ class Marca extends Model
             'brand_code_distrito',
             'brand_code_provincia',
             'brand_code_departamento',
-            'brand_ubigeo'
+            'brand_ubigeo',
+            'brand_estado'
     ];
 }
