@@ -2,28 +2,57 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <meta name="description" content="{{ config('app.name') }}">
+    <meta name="author" content="JCS">
+    <meta name="keyword" content="{{ config('app.name') }}">
+
+    <meta name="userId" content="{{ config('app.name') }}">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="shortcut icon" href="#">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+
+    <!-- vendor css -->
+    <link href="{{ asset('css/font-awesome.css')}}" rel="stylesheet">
+    <link href="{{ asset('css/ionicons.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('css/perfect-scrollbar.css')}}" rel="stylesheet">
+    <link href="{{ asset('css/rickshaw.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('css/starlight.css')}}" rel="stylesheet">
 
     <livewire:styles>
 
 </head>
 <body>
     <div id="app">
+        <!-- ########## START: LEFT PANEL ########## -->
+        @include('layouts.navbars.sideleft')
+       <!-- ########## END: LEFT PANEL ########## -->
+
+        <!-- ########## START: HEAD PANEL ########## -->
+        @include('layouts.navbars.header')
+        <!-- ########## END: HEAD PANEL ########## -->
+
+        <!-- ########## START: RIGHT PANEL ########## -->
+        @include('layouts.navbars.sideright')
+        <!-- ########## END: RIGHT PANEL ########## --->
+
+        <!-- ########## START: MAIN PANEL ########## -->
+        @yield('content')
+        <!-- ########## END: MAIN PANEL ########## -->
+
+<!--
+
         <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -34,16 +63,16 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
+
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item {{ Route::is('marcas.index')?'active':'' }}">
                             <a class="nav-link" href="{{ route('marcas.index') }}">{{ __('Marcas') }}</a>
                         </li>
                     </ul>
 
-                    <!-- Right Side Of Navbar -->
+
                     <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
+
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -76,15 +105,33 @@
                 </div>
             </div>
         </nav>
+-->
 
-        <main class="py-4">
-            <div class="container">
-                @yield('content')
-            </div>
-        </main>
     </div>
 
-    <livewire:scripts>
 
+    <!-- Scripts -->
+   <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/jquery.js') }}" defer></script>
+    <script src="{{ asset('js/popper.js') }}" defer></script>
+    <script src="{{ asset('js/bootstrap.js') }}" defer></script>
+    <script src="{{ asset('js/jquery-ui.js') }}" defer></script>
+    <script src="{{ asset('js/perfect-scrollbar.jquery.js') }}" defer></script>
+    <script src="{{ asset('js/jquery.sparkline.min.js') }}" defer></script>
+    <script src="{{ asset('js/jquery.sparkline.min.js') }}" defer></script>
+    <script src="{{ asset('js/d3.js') }}" defer></script>
+    <script src="{{ asset('js/rickshaw.min.js') }}" defer></script>
+    <script src="{{ asset('js/Chart.js') }}" defer></script>
+    <script src="{{ asset('js/jquery.flot.js') }}" defer></script>
+    <script src="{{ asset('js/jquery.flot.pie.js') }}" defer></script>
+    <script src="{{ asset('js/jquery.flot.resize.js') }}" defer></script>
+    <script src="{{ asset('js/jquery.flot.spline.js') }}" defer></script>
+    <script src="{{ asset('js/starlight.js') }}" defer></script>
+    <script src="{{ asset('js/ResizeSensor.js') }}" defer></script>
+    <script src="{{ asset('js/dashboard.js') }}" defer></script>
+
+
+
+    <livewire:scripts>
 </body>
 </html>
