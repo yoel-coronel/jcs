@@ -1,28 +1,33 @@
-<div class="card">
-    <div class="card-header">
-        <h5 class="card-title">Marca</h5>
-    </div>
-    <div class="card-body">
-        @if (session('status'))
-            <div class="alert alert-success" role="alert">
-                {{ session('status') }}
-            </div>
+<x-crumb>
+    <a class="breadcrumb-item" href="#">Mantenimiento</a>
+    <span class="breadcrumb-item active">Instituciones</span>
+</x-crumb>
+
+<x-page-body>
+
+    <x-slot name="title">
+        Mantenimiento de Institución
+        @if($form !== 0)
+            <button class="btn btn-outline-primary float-right" wire:click="create">Nuevo</button>
         @endif
-        <div class="row">
-            <div class="col-md-12 mb-1">
-                @if($form === 0)
-                    <button class="btn btn-outline-primary float-right" wire:click="create">Nuevo</button>
-                @endif
-            </div>
+    </x-slot>
+
+    <x-slot name="descripcion">
+        Registro y actualizaciones de las instituciones
+    </x-slot>
+    @if (session('status'))
+        <div class="alert alert-success" role="alert">
+            {{ session('status') }}
         </div>
-        @if($form === 1)
-            @include('livewire.marcas.form')
-        @else
+    @endif
+    @if($form === 1)
+        @include('livewire.marcas.form')
+    @else
+    <p>Sin permisos</p>
+    @endif
 
-        @endif
-        <table class="table table-dark">
-            <thead>
-
+    <x-table>
+        <x-slot name="cabecera">
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Razon social</th>
@@ -37,11 +42,8 @@
                 <th scope="col">Fecha Creación</th>
                 <th scope="col">Acciones</th>
             </tr>
-            <tr>
-                <td colspan="2"><input wire:model="search" class="form-control form-control-sm m-0 p-0" type="text" placeholder="Buscar por razon social"></td>
-            </tr>
-            </thead>
-            <tbody>
+        </x-slot>
+        <x-slot name="cuerpo">
             @forelse($marcas as $key =>$marca)
                 <tr>
                     <td>{{$marca->id}}</td>
@@ -62,9 +64,8 @@
             @empty
                 <h4>No hay datos</h4>
             @endforelse
-            </tbody>
-        </table>
-        {{ $marcas->links() }}
-    </div>
-</div>
+        </x-slot>
+    </x-table>
+    {{ $marcas->links() }}
 
+</x-page-body>

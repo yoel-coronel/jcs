@@ -1,7 +1,7 @@
 @extends('layouts.app')
+
 @section('content')
 
-    <livewire:marcas.index/>
+    <livewire:marcas.brand/>
 
 @stop
-

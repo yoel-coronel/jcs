@@ -1,120 +1,136 @@
-<form wire:submit.prevent="store">
-    @csrf
-    <div class="form-row">
-        <div class="col-md-6 mb-3">
-            <label for="brand_name">Razón Social</label>
-            <input type="text"
-                   class="form-control @error('brand_name') is-invalid @enderror"
-                   id="brand_name"
-                   wire:model="brand_name"
-
-                    autocomplete="brand_name" autofocus>
-            @error('brand_name')
+<div class="form-layout" wire:submit.prevent="store">
+    <div class="row mg-b-25">
+        <div class="col-lg-4">
+            <div class="form-group">
+                <label class="form-control-label">Razón Social: <span class="tx-danger">*</span></label>
+                <input class="form-control @error('brand_name') is-invalid @enderror"
+                       type="text"
+                       name="brand_name"
+                       wire:model="brand_name"
+                        required
+                       autocomplete="brand_name" autofocus
+                       placeholder="Aquí razón social">
+                @error('brand_name')
                 <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                 </span>
-            @enderror
-        </div>
-        <div class="col-md-3 mb-3">
-            <label for="brand_code">RUC/DOI</label>
-            <input type="text"
-                   class="form-control @error('brand_code') is-invalid @enderror"
-                   id="brand_code"
-                   wire:model="brand_code"
-
-                   autocomplete="brand_code">
-            @error('brand_code')
-            <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-        </div>
-        <div class="col-md-3 mb-3">
-            <label for="brand_telefono">Teléfono</label>
-            <input type="text"
-                   class="form-control @error('brand_telefono') is-invalid @enderror"
-                   id="brand_telefono"
-                   wire:model="brand_telefono"
-
-                   autocomplete="brand_telefono">
-            @error('brand_telefono')
-            <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-        </div>
-        <div class="col-md-6 mb-3">
-            <label for="brand_address">Dirección</label>
-            <input type="text"
-                   class="form-control @error('brand_address') is-invalid @enderror"
-                   id="brand_address"
-                   wire:model="brand_address"
-
-                   autocomplete="brand_address" autofocus>
-            @error('brand_address')
+                @enderror
+            </div>
+        </div><!-- col-4 -->
+        <div class="col-lg-4">
+            <div class="form-group">
+                <label class="form-control-label">RUC/DOI: <span class="tx-danger">*</span></label>
+                <input class="form-control @error('brand_code') is-invalid @enderror "
+                       type="text"
+                       name="lastname"
+                       wire:model="brand_code"
+                        required
+                       autocomplete="brand_code"
+                       placeholder="Aquí RUC/DOI">
+                @error('brand_code')
                 <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                 </span>
-            @enderror
-        </div>
-        <div class="col-md-2 mb-3">
-            <label for="brand_code_postal">Código postal</label>
-            <input type="text"
-                   class="form-control @error('brand_code_postal') is-invalid @enderror"
-                   id="brand_code_postal"
-                   wire:model="brand_code_postal"
-
-                   autocomplete="brand_code_postal" autofocus>
-            @error('brand_code_postal')
-            <span class="invalid-feedback" role="alert">
+                @enderror
+            </div>
+        </div><!-- col-4 -->
+        <div class="col-lg-4">
+            <div class="form-group">
+                <label class="form-control-label">Teléfono: <span class="tx-danger">*</span></label>
+                <input class="form-control @error('brand_telefono') is-invalid @enderror"
+                       type="text"
+                       name="text"
+                       wire:model="brand_telefono"
+                       autocomplete="brand_telefono"
+                       placeholder="Aquí el número de teléfono">
+                @error('brand_telefono')
+                <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                 </span>
-            @enderror
-        </div>
-        <div class="col-md-4 mb-3">
-            <label for="brand_web">Sitio Web</label>
-            <input type="text"
-                   class="form-control @error('brand_web') is-invalid @enderror"
-                   id="brand_web"
-                   wire:model="brand_web"
+                @enderror
+            </div>
+        </div><!-- col-4 -->
+        <div class="col-lg-6">
+            <div class="form-group mg-b-10-force">
+                <label class="form-control-label">Dirección: <span class="tx-danger">*</span></label>
+                <input class="form-control @error('brand_code_postal') is-invalid @enderror"
+                       type="text"
+                       name="address"
+                       wire:model="brand_address"
+                        required
+                       autocomplete="brand_address"
+                       placeholder="Aquí la dirección">
+            </div>
+        </div><!-- col-6 -->
+        <div class="col-lg-2">
+            <div class="form-group mg-b-10-force">
+                <label class="form-control-label">Código postal: <span class="tx-danger">*</span></label>
+                <input class="form-control" type="text" name="code" value="151946" placeholder="Aquí código">
+            </div>
+        </div><!-- col-2 -->
+        <div class="col-lg-4">
+            <div class="form-group mg-b-10-force">
+                <label class="form-control-label">Sitio Web: <span class="tx-danger">*</span></label>
+                <input class="form-control" type="text" name="code" value="151946" placeholder="Aquí sitio web">
+            </div>
+        </div><!-- col-4 -->
+        <div class="col-lg-3">
+            <div class="form-group mg-b-10-force">
+                <label class="form-control-label">Email: <span class="tx-danger">*</span></label>
+                <input class="form-control" type="email" name="email" value="yoe.coar@gmail.com" placeholder="Aquí email">
+            </div>
+        </div><!-- col-4 -->
+        <div class="col-lg-3">
+            <div class="form-group mg-b-10-force">
+                <label class="form-control-label">Departamento: <span class="tx-danger">*</span></label>
+                <select class="form-control select2" data-placeholder="Seleccione Departamento">
+                    <option label="Seleccione Departamento"></option>
+                    <option value="USA">United States of America</option>
+                    <option value="UK">United Kingdom</option>
+                    <option value="China">China</option>
+                    <option value="Japan">Japan</option>
+                </select>
+            </div>
+        </div><!-- col-3 -->
+        <div class="col-lg-3">
+            <div class="form-group mg-b-10-force">
+                <label class="form-control-label">Provincia: <span class="tx-danger">*</span></label>
+                <select class="form-control select2" data-placeholder="Seleccione provincia">
+                    <option label="Seleccione provincia"></option>
+                    <option value="USA">United States of America</option>
+                    <option value="UK">United Kingdom</option>
+                    <option value="China">China</option>
+                    <option value="Japan">Japan</option>
+                </select>
+            </div>
+        </div><!-- col-3 -->
+        <div class="col-lg-3">
+            <div class="form-group mg-b-10-force">
+                <label class="form-control-label">Distrito: <span class="tx-danger">*</span></label>
+                <select class="form-control select2" data-placeholder="Seleccione distrito">
+                    <option label="Seleccione distrito"></option>
+                    <option value="USA">United States of America</option>
+                    <option value="UK">United Kingdom</option>
+                    <option value="China">China</option>
+                    <option value="Japan">Japan</option>
+                </select>
+            </div>
+        </div><!-- col-3 -->
+        <div class="col-lg-3 mg-t-20 mg-lg-t-0">
+            <label class="ckbox">
+                <input type="checkbox" checked><span>Activo</span>
+            </label>
+        </div><!-- col-3 -->
+    </div><!-- row -->
 
-                   autocomplete="brand_web" autofocus>
-            @error('brand_web')
-            <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-        </div>
-    </div>
-    <div class="form-row">
-        <div class="col-md-6 mb-3">
-            <label for="validationTooltip03">City</label>
-            <input type="text" class="form-control" id="validationTooltip03">
-            <div class="invalid-tooltip">
-                Please provide a valid city.
-            </div>
-        </div>
-        <div class="col-md-3 mb-3">
-            <label for="validationTooltip04">State</label>
-            <select class="custom-select" id="validationTooltip04" >
-                <option selected disabled value="">Choose...</option>
-                <option>...</option>
-            </select>
-            <div class="invalid-tooltip">
-                Please select a valid state.
-            </div>
-        </div>
-        <div class="col-md-3 mb-3">
-            <label for="validationTooltip05">Zip</label>
-            <input type="text" class="form-control" id="validationTooltip05" >
-            <div class="invalid-tooltip">
-                Please provide a valid zip.
-            </div>
-        </div>
-    </div>
+    <div class="form-layout-footer">
+        <button class="btn btn-info mg-r-5" wire:target="store" wire:loading.attr="disabled" type="submit">Submit Form</button>
+        <button class="btn btn-secondary" type="reset">Cancel</button>
 
-    <button class="btn btn-primary" wire:target="store" wire:loading.attr="disabled" type="submit">Submit form</button>
-    <div wire:loading wire:target="store">
-        Procesando informatión...
-    </div>
-</form>
+        <div wire:loading wire:target="store">
+            Procesando informatión...
+        </div>
+
+    </div><!-- form-layout-footer -->
+</div><!-- form-layout -->
+
