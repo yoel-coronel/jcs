@@ -1,11 +1,10 @@
-<div class="form-layout" wire:submit.prevent="store">
+<form class="form-layout" wire:submit.prevent="store">
     <div class="row mg-b-25">
         <div class="col-lg-4">
             <div class="form-group">
                 <label class="form-control-label">Razón Social: <span class="tx-danger">*</span></label>
                 <input class="form-control @error('brand_name') is-invalid @enderror"
                        type="text"
-                       name="brand_name"
                        wire:model="brand_name"
                         required
                        autocomplete="brand_name" autofocus
@@ -125,12 +124,12 @@
 
     <div class="form-layout-footer">
         <button class="btn btn-info mg-r-5" wire:target="store" wire:loading.attr="disabled" type="submit">Submit Form</button>
-        <button class="btn btn-secondary" type="reset">Cancel</button>
+        <button class="btn btn-secondary" type="reset" wire:click="Cancelar" wire:loading.attr="disabled">Cancel</button>
 
         <div wire:loading wire:target="store">
             Procesando informatión...
         </div>
 
     </div><!-- form-layout-footer -->
-</div><!-- form-layout -->
+</form><!-- form-layout -->
 

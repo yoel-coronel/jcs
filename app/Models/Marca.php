@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Marca extends Model
@@ -15,10 +16,12 @@ class Marca extends Model
             'brand_telefono',
             'brand_email',
             'brand_web',
-            'brand_code_distrito',
-            'brand_code_provincia',
-            'brand_code_departamento',
             'brand_ubigeo',
             'brand_estado'
     ];
+
+    public function setCreatedAtAttribute($value)
+    {
+        return dd(Carbon::parse($value)->format('d/m/Y'));
+    }
 }

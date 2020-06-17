@@ -2,6 +2,9 @@
 
 use Illuminate\Database\Seeder;
 use App\User;
+use App\Models\Marca;
+
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -13,6 +16,7 @@ class DatabaseSeeder extends Seeder
     {
         // $this->call(UserSeeder::class);
 
-        factory(User::class)->create();
+        factory(User::class)->times(200)->create();
+        factory(Marca::class)->times(20000)->create();
     }
 }

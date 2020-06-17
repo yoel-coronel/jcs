@@ -1,11 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-
-<nav class="breadcrumb sl-breadcrumb">
-    <a class="breadcrumb-item" href="index.html">Starlight</a>
-    <span class="breadcrumb-item active">Dashboard</span>
-</nav>
+    <x-crumb>
+        <a class="breadcrumb-item" href="#">Starlight</a>
+        <span class="breadcrumb-item active">Dashboard</span>
+    </x-crumb>
 
 <div class="sl-pagebody">
 

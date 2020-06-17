@@ -23,9 +23,6 @@ class CreateMarcasTable extends Migration
             $table->string('brand_telefono',20)->nullable();
             $table->string('brand_email',191)->nullable();
             $table->string('brand_web',191)->nullable();
-            $table->string('brand_code_distrito',10)->nullable();
-            $table->string('brand_code_provincia',10)->nullable();
-            $table->string('brand_code_departamento',10)->nullable();
             $table->string('brand_ubigeo',10)->nullable();
             $table->boolean('brand_estado')->default(1);
             $table->timestamps();

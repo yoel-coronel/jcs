@@ -6,14 +6,10 @@ use App\Models\Marca;
 use App\ServiciosDAO\ICrud;
 
 use Livewire\Component;
-use Livewire\WithPagination;
 
 class Brand extends Component implements ICrud
 {
-    use WithPagination;
-
-    public $search = "";
-    public  $brand_name="Mi nombre";
+    public  $brand_name;
     public  $brand_code;
     public  $brand_address;
     public  $brand_image;
@@ -26,25 +22,25 @@ class Brand extends Component implements ICrud
     public  $brand_code_departamento;
     public  $brand_ubigeo;
 
-   public $form = 1;
-    public function updatingSearch()
+   public $form = 0;
+
+    public function render()
     {
-        $this->resetPage();
+        return view('livewire.marcas.home');
     }
+
     public function create(){
         $this->form = 1;
+    }
+    public function Cancelar(){
+        $this->reset();
+        $this->form = 0;
     }
     public function show($id){
         $this->form = 1;
         $marca = Marca::FindOrFail($id);
         $this->brand_name = $marca->brand_name;
 
-    }
-    public function render()
-    {
-        return view('livewire.marcas.home',[
-            'marcas' => Marca::where('brand_name', 'like', '%'.$this->search.'%')->paginate(2),
-            ]);
     }
     public function store(){
 

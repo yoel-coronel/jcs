@@ -19,7 +19,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
 
-    <!-- Styles -->
+    <!-- Styles-->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
 
@@ -66,18 +66,17 @@
         <!-- ########## END: MAIN PANEL ########## -->
     </div>
 
-    @stack('scripts')
+
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" ></script>
-    <script src="{{ asset('js/jquery.js') }}" ></script>
-    <script src="{{ asset('js/popper.js') }}" ></script>
-    <script src="{{ asset('js/bootstrap.js') }}" ></script>
     <script src="{{ asset('js/jquery-ui.js') }}" defer></script>
     <script src="{{ asset('js/perfect-scrollbar.jquery.js') }}" ></script>
     <script src="{{ asset('js/jquery.sparkline.min.js') }}" ></script>
     <script src="{{ asset('js/jquery.sparkline.min.js') }}" ></script>
     <script src="{{ asset('js/starlight.js') }}" ></script>
     <script src="{{ asset('js/ResizeSensor.js') }}" ></script>
+
+    @stack('scripts')
 
     <livewire:scripts>
 
