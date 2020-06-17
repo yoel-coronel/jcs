@@ -38,13 +38,6 @@ Route::middleware(['auth'])->group(function (){
 });
 
 
-
-
-
-Route::get('/datos','HomeController@datos')->name('datos');
-
-
-
 Route::fallback(function () {
     return redirect('/inicio');
 });

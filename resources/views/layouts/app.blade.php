@@ -35,18 +35,19 @@
 </head>
 <body>
     <div id="app">
-        <!-- ########## START: LEFT PANEL ########## -->
-        @include('layouts.navbars.sideleft')
-       <!-- ########## END: LEFT PANEL ########## -->
+        @auth
+            <!-- ########## START: LEFT PANEL ########## -->
+            @include('layouts.navbars.sideleft')
+           <!-- ########## END: LEFT PANEL ########## -->
 
-        <!-- ########## START: HEAD PANEL ########## -->
-        @include('layouts.navbars.header')
-        <!-- ########## END: HEAD PANEL ########## -->
+            <!-- ########## START: HEAD PANEL ########## -->
+            @include('layouts.navbars.header')
+            <!-- ########## END: HEAD PANEL ########## -->
 
-        <!-- ########## START: RIGHT PANEL ########## -->
-        @include('layouts.navbars.sideright')
-        <!-- ########## END: RIGHT PANEL ########## --->
-
+            <!-- ########## START: RIGHT PANEL ########## -->
+            @include('layouts.navbars.sideright')
+            <!-- ########## END: RIGHT PANEL ########## --->
+        @endauth
         <!-- ########## START: MAIN PANEL ########## -->
         @yield('content')
         <!-- ########## END: MAIN PANEL ########## -->
