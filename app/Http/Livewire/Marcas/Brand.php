@@ -27,7 +27,6 @@ class Brand extends Component
     public  $brand_code_departamento;
     public  $brand_ubigeo;
 
-    //Ya estamos listos
    public $form = 0;
    public $totalPaginate = 10;
 
