@@ -27,6 +27,7 @@ class Brand extends Component
     public  $brand_code_departamento;
     public  $brand_ubigeo;
 
+    //Ya estamos listos
    public $form = 0;
    public $totalPaginate = 10;
 
@@ -35,8 +36,8 @@ class Brand extends Component
 
     protected $updatesQueryString = ['search','page'];
 
-  
-    
+
+
 
    public function updated(){
        if($this->search!=''){
@@ -86,7 +87,7 @@ class Brand extends Component
                 'brand_name' =>$this->brand_name,
                 'brand_code' =>$this->brand_code,
                 'brand_ubigeo' =>$this->brand_ubigeo
-           ]); 
+           ]);
            session()->flash('status', 'Datos guardados.');
         }else{
             $marca = Marca::FindOrFail($this->marca_id);
@@ -96,12 +97,12 @@ class Brand extends Component
             $marca->save();
            session()->flash('status', 'Datos Actualizados.');
         }
-        
+
 
         $this->form = 0;
-        
+
         $this->reset();
-        
+
     }
     public function update(){
 
