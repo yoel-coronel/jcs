@@ -28,6 +28,8 @@ class Brand extends Component
     public  $brand_ubigeo;
 
     //Ya estamos listos
+    //kjasdasd
+    //kjsdnfds
    public $form = 0;
    public $totalPaginate = 10;
 
