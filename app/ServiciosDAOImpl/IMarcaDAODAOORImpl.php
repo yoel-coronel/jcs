@@ -41,4 +41,4 @@ class IMarcaDAODAOORImpl extends Controller implements IMarcaDAO
     {
         // TODO: Implement destroy() method.
     }
-} "eclint": "ecli
+}
