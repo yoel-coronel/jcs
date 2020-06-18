@@ -81,6 +81,11 @@
         </div><!-- col-4 -->
         <div class="col-lg-9">
              <livewire:selects-ubigeos/>
+             @error('brand_ubigeo')
+                <span class="invalid-feedback" role="alert" style="display:block;">
+                        <strong>{{ $message }}</strong>
+                </span>
+            @enderror
         </div>
         <div class="col-lg-3 mg-t-20 mg-lg-t-0">
             <label class="ckbox">

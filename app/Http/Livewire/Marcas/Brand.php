@@ -11,6 +11,9 @@ class Brand extends Component
 {
     use WithPagination;
 
+    protected  $marca="";
+    public  $marca_id=0;
+
     public  $brand_name;
     public  $brand_code;
     public  $brand_address;
@@ -28,11 +31,17 @@ class Brand extends Component
    public $totalPaginate = 10;
 
     public $search = '';
+    public $page = 1;
 
-    protected $updatesQueryString = ['search'];
+    protected $updatesQueryString = ['search','page'];
 
-   public function mount(){
-       $this->search = request()->query('search', $this->search);
+  
+    
+
+   public function updated(){
+       if($this->search!=''){
+            $this->page=1;
+       }
    }
 
     public function render()
@@ -61,22 +70,38 @@ class Brand extends Component
         $this->form = 1;
         $marca = Marca::FindOrFail($id);
         $this->brand_name = $marca->brand_name;
+        $this->marca_id=$id;
 
     }
     public function store(){
 
         $this->validate([
             'brand_name'=>'required|min:5|max:191|unique:marcas',
-            //'brand_code'=>'required|min:11|numeric',
+            'brand_code'=>'required|min:11|numeric',
+            'brand_ubigeo'=>'required|numeric',
         ]);
 
-        Marca::create([
-            'brand_name' =>$this->brand_name
-        ]);
+        if ($this->marca_id==0) {
+           Marca::create([
+                'brand_name' =>$this->brand_name,
+                'brand_code' =>$this->brand_code,
+                'brand_ubigeo' =>$this->brand_ubigeo
+           ]); 
+           session()->flash('status', 'Datos guardados.');
+        }else{
+            $marca = Marca::FindOrFail($this->marca_id);
+            $marca->brand_name =$this->brand_name;
+            $marca->brand_code =$this->brand_code;
+            $marca->brand_ubigeo =$this->brand_ubigeo;
+            $marca->save();
+           session()->flash('status', 'Datos Actualizados.');
+        }
+        
 
         $this->form = 0;
-        session()->flash('status', 'Datos guardados.');
-        return redirect()->to('/instituciones');
+        
+        $this->reset();
+        
     }
     public function update(){
 

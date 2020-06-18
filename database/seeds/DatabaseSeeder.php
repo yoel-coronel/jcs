@@ -17,8 +17,8 @@ class DatabaseSeeder extends Seeder
     {
         // $this->call(UserSeeder::class);
 
-       factory(User::class)->times(200)->create();
-       factory(Marca::class)->times(20000)->create();
+       factory(User::class)->times(10)->create();
+       factory(Marca::class)->times(100)->create();
        factory(Ubigeo::class)->times(10)->create();
     }
 }
