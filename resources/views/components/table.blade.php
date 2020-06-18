@@ -1,7 +1,10 @@
 <div class="table-responsive">
-    <table class="table display responsive table-info" style="width: 100%" {{ $attributes }}>
-        <thead class="bg-info">
+    <table class="table table-bordered" {{  $attributes  }}>
+    <thead class="bg-info">
            {{ $cabecera }}
-        </thead>
+    </thead>
+        <tbody>
+        {{ $cuerpo }}
+        </tbody>
     </table>
 </div>

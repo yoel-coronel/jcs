@@ -33,7 +33,6 @@
                         <th scope="col">Dirección</th>
                         <th scope="col">Código postal</th>
                         <th scope="col">Email</th>
-                        <th scope="col">Sitio Web</th>
                         <th scope="col">Ubigeo</th>
                         <th scope="col">Teléfono</th>
                         <th scope="col">Estado</th>
@@ -41,8 +40,31 @@
                         <th scope="col">&nbsp;</th>
                     </tr>
                 </x-slot>
+                <x-slot name="cuerpo">
+                    @forelse($marcas as $marca)
+                    <tr>
+                        <td>{{ $marca->id }}</td>
+                        <td>{{ $marca->brand_name }}</td>
+                        <td>{{ $marca->brand_code }}</td>
+                        <td>{{ $marca->brand_address }}</td>
+                        <td>{{ $marca->brand_code_postal }}</td>
+                        <td>{{ $marca->brand_email }}</td>
+                        <td>{{ $marca->brand_ubigeo }}</td>
+                        <td>{{ $marca->telefono }}</td>
+                        <td>{{ $marca->brand_estado }}</td>
+                        <td>{{ $marca->created_at }}</td>
+                        <td>
+                            <button class="btn btn-xs btn-info" wire:click="show({{$marca->id}})">!!!</button>
+                        </td>
 
+
+                    </tr>
+                    @empty
+                        <h4>No hay datos</h4>
+                    @endforelse
+                </x-slot>
             </x-table>
+            {{ $marcas->links() }}
         @endif
 
     </x-page-body>

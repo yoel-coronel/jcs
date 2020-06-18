@@ -12,10 +12,10 @@ class IMarcaDAODAOImpl extends Controller implements IMarcaDAO
     public function showAll()
     {
         return response()->json([
-           "data"=>[
-               "nombre"=>"Emilyn",
-               "Apellido" =>"Sucari"
-           ],
+            "data"=>[
+                "nombre"=>"Emilyn",
+                "Apellido" =>"Sucari"
+            ],
             "meta"=>[
                 "count"=>1
             ]
@@ -41,4 +41,4 @@ class IMarcaDAODAOImpl extends Controller implements IMarcaDAO
     {
         // TODO: Implement destroy() method.
     }
-}
+}m": "178168e87efad6171b372add1dea3

@@ -3,13 +3,14 @@
 namespace App\Http\Livewire\Marcas;
 
 use App\Models\Marca;
-use App\ServiciosDAO\ICrud;
-
 use Livewire\Component;
-use function Symfony\Component\String\u;
 
-class Brand extends Component implements ICrud
+use Livewire\WithPagination;
+
+class Brand extends Component
 {
+    use WithPagination;
+
     public  $brand_name;
     public  $brand_code;
     public  $brand_address;
@@ -27,7 +28,9 @@ class Brand extends Component implements ICrud
 
     public function render()
     {
-        return view('livewire.marcas.home');
+        return view('livewire.marcas.home',[
+            "marcas" => Marca::paginate(10),
+        ]);
     }
 
     public function create(){
@@ -35,7 +38,6 @@ class Brand extends Component implements ICrud
     }
     public function Cancelar(){
         $this->form = 0;
-       return redirect()->to('/instituciones');
     }
     public function show($id){
         $this->form = 1;
