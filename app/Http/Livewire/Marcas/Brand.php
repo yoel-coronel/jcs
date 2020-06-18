@@ -6,6 +6,7 @@ use App\Models\Marca;
 use Livewire\Component;
 
 use Livewire\WithPagination;
+use phpDocumentor\Reflection\Types\Nullable;
 
 class Brand extends Component
 {
@@ -22,13 +23,8 @@ class Brand extends Component
     public  $brand_telefono;
     public  $brand_email;
     public  $brand_web;
-    public  $brand_code_distrito;
-    public  $brand_code_provincia;
-    public  $brand_code_departamento;
     public  $brand_ubigeo;
-
-    //kjasdasd
-    //kjsdnfds
+    public  $brand_estado;
 
    public $form = 0;
    public $totalPaginate = 10;
@@ -37,9 +33,6 @@ class Brand extends Component
     public $page = 1;
 
     protected $updatesQueryString = ['search','page'];
-
-
-
 
    public function updated(){
        if($this->search!=''){
@@ -61,33 +54,47 @@ class Brand extends Component
     public function UpdatedUbigeo($id)
     {
         $this->brand_ubigeo = $id;
+        $this->validacion();
     }
 
     public function create(){
         $this->form = 1;
     }
     public function Cancelar(){
+        $this->reset();
         $this->form = 0;
     }
     public function show($id){
         $this->form = 1;
         $marca = Marca::FindOrFail($id);
-        $this->brand_name = $marca->brand_name;
+        $this->brand_name   = $marca->brand_name;
+        $this->brand_code   = $marca->brand_code;
+        $this->brand_email   = $marca->brand_email;
+        $this->brand_address= $marca->brand_address;
+        $this->brand_image  = $marca->brand_image;
+        $this->brand_code_postal= $marca->brand_code_postal;
+        $this->brand_telefono   = $marca->brand_telefono;
+        $this->brand_web        = $marca->brand_web;
+        $this->brand_ubigeo     = $marca->brand_ubigeo;
+        $this->brand_estado = $marca->brand_estado;
         $this->marca_id=$id;
 
     }
     public function store(){
 
-        $this->validate([
-            'brand_name'=>'required|min:5|max:191|unique:marcas',
-            'brand_code'=>'required|min:11|numeric',
-            'brand_ubigeo'=>'required|numeric',
-        ]);
+        $this->validacion();
 
         if ($this->marca_id==0) {
            Marca::create([
                 'brand_name' =>$this->brand_name,
                 'brand_code' =>$this->brand_code,
+                'brand_email'  => $this->brand_email,
+                'brand_address' =>$this->brand_address,
+                'brand_image' =>$this->brand_image,
+                'brand_code_postal' =>$this->brand_code_postal,
+                'brand_telefono' =>$this->brand_telefono,
+                'brand_web' =>$this->brand_web,
+                'brand_estado' => $this->brand_estado,
                 'brand_ubigeo' =>$this->brand_ubigeo
            ]);
            session()->flash('status', 'Datos guardados.');
@@ -95,12 +102,18 @@ class Brand extends Component
             $marca = Marca::FindOrFail($this->marca_id);
             $marca->brand_name =$this->brand_name;
             $marca->brand_code =$this->brand_code;
+            $marca->brand_email =$this->brand_email;
+            $marca->brand_address =$this->brand_address;
+            $marca->brand_image =$this->brand_image;
+            $marca->brand_code_postal =$this->brand_code_postal;
+            $marca->brand_telefono =$this->brand_telefono;
+            $marca->brand_web =$this->brand_web;
             $marca->brand_ubigeo =$this->brand_ubigeo;
+            $marca->brand_estado = $this->brand_estado;
             $marca->save();
+
            session()->flash('status', 'Datos Actualizados.');
         }
-
-
         $this->form = 0;
 
         $this->reset();
@@ -112,6 +125,47 @@ class Brand extends Component
     public function destroy($id)
     {
 
+    }
+
+        public function validacion()
+    {
+        $roles = [
+            'brand_code'=>'required|min:11|numeric',
+            'brand_ubigeo'=>'required|numeric',
+            'brand_telefono'=>'nullable|min:7|string',
+            'brand_address'=>'nullable|string|max:191',
+            'brand_code_postal'=>'nullable|string|max:191',
+            'brand_web'=>'required|url',
+            'brand_email'=>'required|email'
+        ];
+        if($this->marca_id==0){
+
+            $roles['brand_name'] = 'required|min:5|max:191|unique:marcas';
+
+        }else{
+
+            $roles['brand_name'] = 'required|min:5|max:191|unique:marcas,'.$this->marca_id;
+
+        }
+
+
+        $this->validate($roles,[
+            'brand_name.required'=>'La la razón social es obligatorio',
+            'brand_name.min'=>'La razón social debe contener al menos :min caracteres',
+            'brand_name.max'=>'La razón social debe contener menos de :max caracteres.',
+            'brand_name.unique'=>'El valor de la razón social ya está en uso.',
+            'brand_code.required'=>'El RUC/DOI es obligatorio.',
+            'brand_code.min'=>'El RUC/DOI debe tener almenos :min números.',
+            'brand_code.numeric'=>'El RUC/DOI debe ser de un número.',
+            'brand_telefono.min' =>'El teléfono debe contener al menos :min números.',
+            'brand_address.max' =>'La dirección debe contener menos de :max caracteres.',
+            'brand_web.required' =>'La url sitio web es obligatorio',
+            'brand_web.url' =>'La url es de formato inválido',
+            'brand_email.required' =>'El email es obligatorio',
+            'brand_email.email' =>'El email es de formato inválido',
+            'brand_ubigeo.required'=>'Debe seleccionar el departamento la provincia y distrito de la ubicación de la institución',
+            'brand_ubigeo.numeric'=>'El ubigeo dene se un número'
+        ]);
     }
 
 }

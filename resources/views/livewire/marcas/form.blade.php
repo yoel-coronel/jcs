@@ -21,7 +21,6 @@
                 <label class="form-control-label">RUC/DOI: <span class="tx-danger">*</span></label>
                 <input class="form-control @error('brand_code') is-invalid @enderror "
                        type="text"
-                       name="lastname"
                        wire:model="brand_code"
                         required
                        autocomplete="brand_code"
@@ -38,14 +37,13 @@
                 <label class="form-control-label">Teléfono: <span class="tx-danger">*</span></label>
                 <input class="form-control @error('brand_telefono') is-invalid @enderror"
                        type="text"
-                       name="text"
                        wire:model="brand_telefono"
                        autocomplete="brand_telefono"
                        placeholder="Aquí el número de teléfono">
                 @error('brand_telefono')
-                <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                </span>
+                    <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                    </span>
                 @enderror
             </div>
         </div><!-- col-4 -->
@@ -54,29 +52,58 @@
                 <label class="form-control-label">Dirección: <span class="tx-danger">*</span></label>
                 <input class="form-control @error('brand_code_postal') is-invalid @enderror"
                        type="text"
-                       name="address"
                        wire:model="brand_address"
                         required
                        autocomplete="brand_address"
                        placeholder="Aquí la dirección">
+                @error('brand_address')
+                    <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
             </div>
         </div><!-- col-6 -->
         <div class="col-lg-2">
             <div class="form-group mg-b-10-force">
                 <label class="form-control-label">Código postal: <span class="tx-danger">*</span></label>
-                <input class="form-control" type="text" name="code" value="151946" placeholder="Aquí código">
+                <input class="form-control @error('brand_code_postal') is-invalid @enderror"
+                       type="text"
+                       wire:model="brand_code_postal"
+                       placeholder="Aquí código">
+                @error('brand_code_postal')
+                    <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
             </div>
         </div><!-- col-2 -->
         <div class="col-lg-4">
             <div class="form-group mg-b-10-force">
                 <label class="form-control-label">Sitio Web: <span class="tx-danger">*</span></label>
-                <input class="form-control" type="text" name="code" value="151946" placeholder="Aquí sitio web">
+                <input class="form-control @error('brand_web') is-invalid @enderror"
+                       type="url"
+                       wire:model="brand_web"
+                       required
+                       placeholder="Aquí sitio web">
+                @error('brand_web')
+                    <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
             </div>
         </div><!-- col-4 -->
         <div class="col-lg-3">
             <div class="form-group mg-b-10-force">
                 <label class="form-control-label">Email: <span class="tx-danger">*</span></label>
-                <input class="form-control" type="email" name="email" value="yoe.coar@gmail.com" placeholder="Aquí email">
+                <input class="form-control @error('brand_email') is-invalid @enderror"
+                       type="email"
+                       wire:model="brand_email"
+                       placeholder="Aquí email">
+                @error('brand_email')
+                    <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
             </div>
         </div><!-- col-4 -->
         <div class="col-lg-9">
@@ -89,7 +116,7 @@
         </div>
         <div class="col-lg-3 mg-t-20 mg-lg-t-0">
             <label class="ckbox">
-                <input type="checkbox" checked><span>Activo</span>
+                <input type="checkbox" wire:model="brand_estado"><span>Activo</span>
             </label>
         </div><!-- col-3 -->
     </div><!-- row -->
