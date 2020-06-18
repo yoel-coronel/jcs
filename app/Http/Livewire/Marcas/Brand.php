@@ -6,6 +6,7 @@ use App\Models\Marca;
 use App\ServiciosDAO\ICrud;
 
 use Livewire\Component;
+use function Symfony\Component\String\u;
 
 class Brand extends Component implements ICrud
 {
@@ -33,8 +34,8 @@ class Brand extends Component implements ICrud
         $this->form = 1;
     }
     public function Cancelar(){
-        $this->reset();
         $this->form = 0;
+       return redirect()->to('/instituciones');
     }
     public function show($id){
         $this->form = 1;
@@ -55,12 +56,14 @@ class Brand extends Component implements ICrud
 
         $this->form = 0;
         session()->flash('status', 'Datos guardados.');
+        return redirect()->to('/instituciones');
     }
     public function update(){
 
     }
-    public function destroy()
+    public function destroy($id)
     {
+        dd($id);
     }
 
 }

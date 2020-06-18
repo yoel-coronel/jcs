@@ -8,5 +8,5 @@ Interface ICrud
 {
     public function store();
     public function update();
-    public function destroy();
+    public function destroy($id);
 }

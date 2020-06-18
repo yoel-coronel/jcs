@@ -38,6 +38,7 @@
                         <th scope="col">Teléfono</th>
                         <th scope="col">Estado</th>
                         <th scope="col">Fecha Creación</th>
+                        <th scope="col">&nbsp;</th>
                     </tr>
                 </x-slot>
 

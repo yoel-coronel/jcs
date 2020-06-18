@@ -11,14 +11,18 @@ class MarcasController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\Response
      */
     public function index()
     {
        // return Marca::all();
        // return datatables()->toJson();
 
-        return datatables()->eloquent(Marca::query())->toJson();
+        return datatables()
+            ->eloquent(Marca::query())
+            ->addColumn('btn','acciones')
+            ->rawColumns(['btn'])
+            ->toJson();
     }
 
     /**

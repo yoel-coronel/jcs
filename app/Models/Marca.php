@@ -20,8 +20,8 @@ class Marca extends Model
             'brand_estado'
     ];
 
-    public function setCreatedAtAttribute($value)
+    public function getCreatedAtAttribute($value)
     {
-        return dd(Carbon::parse($value)->format('d/m/Y'));
+        return Carbon::parse($value)->format('d/m/Y');
     }
 }
