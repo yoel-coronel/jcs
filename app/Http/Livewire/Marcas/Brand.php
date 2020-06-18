@@ -25,12 +25,30 @@ class Brand extends Component
     public  $brand_ubigeo;
 
    public $form = 0;
+   public $totalPaginate = 10;
+
+    public $search = '';
+
+    protected $updatesQueryString = ['search'];
+
+   public function mount(){
+       $this->search = request()->query('search', $this->search);
+   }
 
     public function render()
     {
         return view('livewire.marcas.home',[
-            "marcas" => Marca::paginate(10),
+            "marcas" => Marca::where('brand_name', 'like', '%'.$this->search.'%')
+                              ->orWhere('brand_code','like', '%'.$this->search.'%')
+                              ->paginate($this->totalPaginate),
         ]);
+    }
+
+    protected $listeners = ['Ubigeo' => 'UpdatedUbigeo'];
+
+    public function UpdatedUbigeo($id)
+    {
+        $this->brand_ubigeo = $id;
     }
 
     public function create(){
@@ -65,7 +83,7 @@ class Brand extends Component
     }
     public function destroy($id)
     {
-        dd($id);
+
     }
 
 }

@@ -79,42 +79,9 @@
                 <input class="form-control" type="email" name="email" value="yoe.coar@gmail.com" placeholder="Aquí email">
             </div>
         </div><!-- col-4 -->
-        <div class="col-lg-3">
-            <div class="form-group mg-b-10-force">
-                <label class="form-control-label">Departamento: <span class="tx-danger">*</span></label>
-                <select class="form-control select2" data-placeholder="Seleccione Departamento">
-                    <option label="Seleccione Departamento"></option>
-                    <option value="USA">United States of America</option>
-                    <option value="UK">United Kingdom</option>
-                    <option value="China">China</option>
-                    <option value="Japan">Japan</option>
-                </select>
-            </div>
-        </div><!-- col-3 -->
-        <div class="col-lg-3">
-            <div class="form-group mg-b-10-force">
-                <label class="form-control-label">Provincia: <span class="tx-danger">*</span></label>
-                <select class="form-control select2" data-placeholder="Seleccione provincia">
-                    <option label="Seleccione provincia"></option>
-                    <option value="USA">United States of America</option>
-                    <option value="UK">United Kingdom</option>
-                    <option value="China">China</option>
-                    <option value="Japan">Japan</option>
-                </select>
-            </div>
-        </div><!-- col-3 -->
-        <div class="col-lg-3">
-            <div class="form-group mg-b-10-force">
-                <label class="form-control-label">Distrito: <span class="tx-danger">*</span></label>
-                <select class="form-control select2" data-placeholder="Seleccione distrito">
-                    <option label="Seleccione distrito"></option>
-                    <option value="USA">United States of America</option>
-                    <option value="UK">United Kingdom</option>
-                    <option value="China">China</option>
-                    <option value="Japan">Japan</option>
-                </select>
-            </div>
-        </div><!-- col-3 -->
+        <div class="col-lg-9">
+             <livewire:selects-ubigeos/>
+        </div>
         <div class="col-lg-3 mg-t-20 mg-lg-t-0">
             <label class="ckbox">
                 <input type="checkbox" checked><span>Activo</span>
@@ -123,7 +90,7 @@
     </div><!-- row -->
 
     <div class="form-layout-footer">
-        <button class="btn btn-info mg-r-5" wire:target="store" wire:loading.attr="disabled" type="submit">Submit Form</button>
+        <button class="btn btn-info mg-r-5" wire:target="store" wire:loading.attr="disabled" type="submit">Guardar Información</button>
         <button class="btn btn-secondary" type="reset" wire:click="Cancelar" wire:loading.attr="disabled">Cancel</button>
 
         <div wire:loading wire:target="store">
