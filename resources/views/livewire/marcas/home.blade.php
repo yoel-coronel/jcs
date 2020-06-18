@@ -45,6 +45,7 @@
                         <th scope="col">Teléfono</th>
                         <th scope="col">Estado</th>
                         <th scope="col">Fecha Creación</th>
+                        <th scope="col">Fecha Actualizacion</th>
                         <th scope="col">&nbsp;</th>
                     </tr>
                 </x-slot>
@@ -61,6 +62,7 @@
                         <td>{{ $marca->telefono }}</td>
                         <td>{{ $marca->brand_estado }}</td>
                         <td>{{ $marca->created_at }}</td>
+                        <td>{{ $marca->updated_at }}</td>
                         <td>
                             <button class="btn btn-sm btn-info" wire:click="show({{$marca->id}})"> <i class="fa fa-pencil"></i></button>
                             <button class="btn btn-sm btn-danger" wire:click="show({{$marca->id}})"> <i class="fa fa-trash"></i></button>
