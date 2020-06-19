@@ -29,5 +29,5 @@ class Marca extends Model
     {
         return Carbon::parse($value)->format('d/m/Y');
     }
-    
+
 }

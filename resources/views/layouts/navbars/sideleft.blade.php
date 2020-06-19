@@ -48,7 +48,13 @@
             <li class="nav-item">
                 <a href="{{ route('marcas.index')}}"
                    class="nav-link {{ Route::is('marcas.index')?'active':'' }}">
-                    {{ __('Institución') }}
+                    {{ __('Instituciones') }}
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route('entidades.index')}}"
+                   class="nav-link {{ Route::is('entidades.index')?'active':'' }}">
+                    {{ __('Entidades') }}
                 </a>
             </li>
 

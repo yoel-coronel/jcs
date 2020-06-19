@@ -26,7 +26,8 @@ Route::middleware(['auth'])->group(function (){
     Route::get('password/confirm', 'Auth\LoginController@Auth\ConfirmPasswordController@showConfirmForm')->name('password.confirm');
     Route::post('password/confirm', 'Auth\LoginController@Auth\ConfirmPasswordController@confirm');
 
-    Route::view('/instituciones', 'marcas.index')->name('marcas.index');
+    Route::view('/instituciones', 'mantenimiento.instituciones')->name('marcas.index');
+    Route::view('/entidades', 'mantenimiento.entidades')->name('entidades.index');
 
 
     Route::post('logout', 'Auth\LoginController@logout')->name('logout');

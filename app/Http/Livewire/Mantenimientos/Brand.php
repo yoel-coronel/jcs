@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Marcas;
+namespace App\Http\Livewire\Mantenimientos;
 
 use App\Models\Marca;
 use Livewire\Component;
@@ -44,6 +44,7 @@ class Brand extends Component
         return view('livewire.marcas.home',[
             "marcas" => Marca::where('brand_name', 'like', '%'.$this->search.'%')
                               ->orWhere('brand_code','like', '%'.$this->search.'%')
+                              ->orderBy('created_at','desc')
                               ->paginate($this->totalPaginate),
         ]);
     }

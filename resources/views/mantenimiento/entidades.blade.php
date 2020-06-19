@@ -5,7 +5,7 @@
 
 @section('content')
 
-    <livewire:marcas.brand/>
+    <livewire:mantenimientos.entity/>
 
 @stop
 @push('scripts')
