@@ -4,17 +4,19 @@ namespace App\Http\Livewire\Mantenimientos;
 
 use Livewire\Component;
 use App\Models\Entidad;
+use Livewire\WithPagination;
 
 class Entity extends Component
 {
+    use WithPagination;
     public $ent_id;
     public $ent_secuencia;
     public $ent_nombre;
     public $ent_criterio;
-    public $ent_estado;
+    public $ent_estado = 0;
 
     public $form = 0;
-    public $totalPaginate = 10;
+    public $totalPaginate = 5;
 
     public $search = '';
     public $page = 1;
