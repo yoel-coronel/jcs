@@ -162,7 +162,7 @@ class Brand extends Component
             'brand_email.required' =>'El email es obligatorio',
             'brand_email.email' =>'El email es de formato inválido',
             'brand_ubigeo.required'=>'Debe seleccionar el departamento la provincia y distrito de la ubicación de la institución',
-            'brand_ubigeo.numeric'=>'El ubigeo dene se un número'
+            'brand_ubigeo.numeric'=>'El ubigeo debe ser un número'
         ]);
     }
 

@@ -1,5 +1,5 @@
 <div class="table-responsive">
-    <table class="table table-bordered" {{  $attributes  }}>
+    <table class="table table-hover table-bordered" {{  $attributes  }}>
     <thead class="bg-info">
            {{ $cabecera }}
     </thead>
