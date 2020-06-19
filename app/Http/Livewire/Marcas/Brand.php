@@ -6,7 +6,6 @@ use App\Models\Marca;
 use Livewire\Component;
 
 use Livewire\WithPagination;
-use phpDocumentor\Reflection\Types\Nullable;
 
 class Brand extends Component
 {
@@ -78,7 +77,7 @@ class Brand extends Component
         $this->brand_ubigeo     = $marca->brand_ubigeo;
         $this->brand_estado = $marca->brand_estado;
         $this->marca_id=$id;
-
+        $this->emit('AuloadUbigeo', $marca->brand_ubigeo);
     }
     public function store(){
 
@@ -126,8 +125,7 @@ class Brand extends Component
     {
 
     }
-
-        public function validacion()
+    public function validacion()
     {
         $roles = [
             'brand_code'=>'required|min:11|numeric',
